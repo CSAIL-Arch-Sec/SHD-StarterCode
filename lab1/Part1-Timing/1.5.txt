@@ -1,0 +1,3 @@
+# Put answer in number of cycles please
+L2_L3_THRESHOLD: ?
+L3_DRAM_THRESHOLD: ?

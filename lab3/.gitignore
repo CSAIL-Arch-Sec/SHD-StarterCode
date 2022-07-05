@@ -1,0 +1,8 @@
+# Filesystem dust
+.DS_Store
+
+# Chrome extension certificate
+*.pem
+
+# Warmup binary
+warmup

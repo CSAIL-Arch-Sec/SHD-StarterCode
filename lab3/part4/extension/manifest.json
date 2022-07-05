@@ -1,0 +1,10 @@
+{
+  "name": "6.888 Lab Countermeasure",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+  "host_permissions": ["*://*/*"]
+}

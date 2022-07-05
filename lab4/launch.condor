@@ -1,0 +1,13 @@
+universe         = vanilla
+getenv           = true
+initialdir       = $ENV(PWD)
+request_cpus     = 1
+notification     = Always
+Rank             = cpus
+should_transfer_files = YES
+Requirements = (machine == "csg-expX.csail.mit.edu")
+
+##  Do not edit  ##
+accounting_group = $ENV(CONDOR_GROUP)
+########################################################
+Queue
