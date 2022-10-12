@@ -1,7 +1,7 @@
 CC := gcc
 AS := as
 LD := ld
-OBJCOPY := llvm-objcopy-6.0
+OBJCOPY := objcopy
 
 TARGET := part3 gadgets.bin gadgets.o
 
