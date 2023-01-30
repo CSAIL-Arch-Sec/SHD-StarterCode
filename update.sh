@@ -11,7 +11,7 @@ REMOTE_NAME="startercode"
 REMOTE_URL="https://github.com/CSAIL-Arch-Sec/SHD-StarterCode.git"
 
 # progname, from top dir
-UPDATESH="./deploy/$(basename $progname)"
+UPDATESH="./$(basename $progname)"
 
 CONTACT_MESSAGE="Contact the instructor and TA with a screen shot of ALL output from running $0."
 
