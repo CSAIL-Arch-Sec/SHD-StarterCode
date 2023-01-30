@@ -11,7 +11,7 @@ REMOTE_NAME="startercode"
 REMOTE_URL="https://github.com/CSAIL-Arch-Sec/SHD-StarterCode.git"
 
 # progname, from top dir
-UPDATESH="./$(basename $progname)"
+UPDATESH="./deploy/$(basename $progname)"
 
 CONTACT_MESSAGE="Contact the instructor and TA with a screen shot of ALL output from running $0."
 
@@ -36,24 +36,13 @@ if ! git remote get-url ${REMOTE_NAME} >/dev/null 2>&1; then
 
     echo "Merging histories for the first time..."
     set -x
-    # NOTE: To avoid merge failures when students already have worked on files
-    #       we use the recursive/ours strategy that keeps any local file and
-    #       discards remote changes. Unfortunately, this means that update.sh
-    #       cannot be updated in this way.
-    #       If we failed a merge then we try to undo. https://stackoverflow.com/a/55192451
-    git pull --allow-unrelated-histories -s recursive -X ours --no-edit  ${REMOTE_NAME} main || \
+    git pull --allow-unrelated-histories -s recursive -X theirs --no-edit  ${REMOTE_NAME} main || \
 	{ git rev-list -1 MERGE_HEAD >/dev/null 2>&1 && git merge --abort ; \
 	  git remote rm ${REMOTE_NAME}; \
 	  die "Failed to merge histories. ${CONTACT_MESSAGE}" $?; }
-    # ensure update.sh is updated
-    git checkout ${REMOTE_NAME}/main ${UPDATESH} && \
-	git add ${UPDATESH} && \
-	git commit -m "updated ${UPDATESH} from ${REMOTE_NAME}" ${UPDATESH} || \
-	    echo "NOTE: ${UPDATESH} was not updated. Contact instructor/TA if problems persist."
 
     set +x
 fi    
 
 echo "updating repository... git pull from ${REMOTE_NAME}"
 git pull --no-edit ${REMOTE_NAME} main || die "Failed to pull from ${REMOTE_NAME}. ${CONTACT_MESSAGE}"
-
