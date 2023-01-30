@@ -1,4 +1,4 @@
-# MIT Secure Hardware Design Spring 2022
+# MIT Secure Hardware Design Spring 2023
 Welcome to the course starter code for MIT's Secure Hardware Design class!
 
 This repository contains the starter code provided to students for each of our labs. This README contains instructions for how to run the labs on your own machines and is intended for use by individuals looking to self-study our materials (or instructors looking to use our materials as part of their course curriculum).
