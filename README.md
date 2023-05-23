@@ -1,13 +1,13 @@
 # MIT Secure Hardware Design
 Welcome to the course starter code for MIT's Secure Hardware Design class!
 
-This repository contains the starter code provided to students for each of our labs. This README contains instructions for how to run the labs on your own machines and is intended for use by individuals looking to self-study our materials (or instructors looking to use our materials as part of their course curriculum).
+This repository points to the starter code provided to students for each of our labs. This README contains instructions for how to run the labs on your own machines and is intended for use by individuals looking to self-study our materials (or instructors looking to use our materials as part of their course curriculum).
 
 You can reach out to our team at `hw-sec-lab-dev` at `mit.edu`.
 
-Our course website can be found [here](http://csg.csail.mit.edu/6.888Yan/).
+Our course website can be found [here](http://csg.csail.mit.edu/6.S983/).
 
-This repository is a companion document to our lab handouts which can be found [here](http://csg.csail.mit.edu/6.888Yan/labs).
+This repository is a companion document to our lab handouts which can be found [here](http://csg.csail.mit.edu/6.S983/labs/).
 
 # Want to use this in your course?
 Please contact `hw-sec-lab-dev` at `mit.edu` before using any of our material in your course. We can provide you with the instructor solutions, sample gradebook, and grading scripts.
@@ -66,7 +66,19 @@ These lab experiments provide the depth aspect of the course, where students imp
 
 Here's a description of what to expect from each lab in this repository. Our lab content provides both a good deal of depth into what we think are the most important problems for architects to pay attention to, as well as a good deal of breadth to get students exposed to a variety of elements of secure hardware design.
 
-# Lab 1- Cache Side Channels
+# Lab 1 - Website Fingerprinting
+**Learning Objectives**
+* Explore a new kind of side channel from a high level language.
+* Understand how to reason about the root cause of misleading microarchitectural observations.
+* Develop a real-world website fingerprinting attack that works on modern browsers.
+
+**Description**
+In this lab, students implement the techniques from our group's ISCA 2022 paper `There's Always a Bigger Fish: A Case Study of a Misunderstood Timing Side Channel`. Students will begin by implementing a seemingly familiar cache-based side channel attack in Javascript, and will then be asked to reason about why this attack works. Then, students will remove a core part of the attack, but see that the code still works.
+
+**Setup**
+Students can complete this lab on their own machines. MacOS, Linux, Windows all should work. Google Chrome is required for Part 4 of this lab.
+
+# Lab 2 - Cache Side Channels
 
 **Learning Objectives**
 * Discover L1/ L2/ L3 caches in practice and how they are shared in modern multicore systems.
@@ -95,39 +107,12 @@ sudo modprobe msr
 sudo wrmsr -a 0x1a4 15
 ```
 
-**Grading**
-We suggest a breakdown of the following:
-
-* Part 1- 20% of the total
-  * 1 point for correct `1.2.txt`.
-  * 1 point for correct `1.4.txt`.
-  * 1 point for correct `1.5.txt`.
-  * 1 point for correct histogram.
-  * Part 1 subscore is out of 4 points.
-* Part 2- 50% of the total
-  * 5% of part 2 credit is given for a correct answer to DQ6.
-  * 95% of part 2 credit is given for a correct chat client. Partial credit can be awarded at the discretion of the TA for partially functional solutions.
-* Part 3- 30% of the total
-  * 75% of part 3 credit is awarded for a functioning `victim-4` attack.
-  * 25% of part 3 credit is awarded for a functioning `victim-3` attack.
-  * An additional 25% of credit for part 3 can be awarded for a functioning `victim-2` attack (that is, `victim-2` is extra credit).
-
-```
-Part 1 subscore = (1.2 correct + 1.4 correct + 1.5 correct + histogram correct) / 4
-
-Part 2 subscore = (0.05 * DQ6 answer) + (0.95 * chat client score)
-
-Part 3 subscore = (0.75 * victim-4 works) + (0.25 * vicitm-3 works) + (0.25 * victim-2 works)
-
-Total = 0.2 * Part 1 Subscore + 0.5 * Part 2 Subscore + 0.3 * Part 3 Subscore
-```
-
 **Advice**
 We have found this lab to be the most challenging of the five for a variety of reasons. As this is the student's first microarchitectural attack, there is a steep learning curve to learn how to reason about microarchitectural state. Additionally, the `prime+probe` technique is harder to get right than the `flush+reload` technique we allow in future labs.
 
 While Lab 1 is challenging, we believe it is very rewarding for students to complete, and provides a great foundation for which to build on during in-class discussions and in future labs.
 
-# Lab 2- Spectre
+# Lab 3 - Spectre
 **Learning Objectives**
 * Apply an understanding of the cache hierarchy from lab 1 to build a new kind of side channel using shared memory (`flush+reload`).
 * Understand how speculative execution works in modern out-of-order machines, and how it leaks information via the microarchitecture.
@@ -144,36 +129,6 @@ This lab requires the use of a kernel module victim. The kernel module source ca
 
 We caution that machines with low memory and no swap space may freeze if students allocate large buffers of memory as part of their attacks. Instructors should beware of this possibility and test their machines extensively before allowing students to attempt the labs.
 
-**Grading**
-We suggest a breakdown of the following:
-
-* Part 1 is 35% of the total.
-* Part 2 is 40% of the total.
-* Part 3 is 25% of the total.
-
-The entire lab is self-grading with `check.py`. The TA can award partial credit at their own discretion for assignments that do not score 100% with the check script. Labs that take too long to run can be stopped following the lab handout timing requirements.
-
-The TA should also allocate points for correct answers to Discussion Questions 1-6. We settled on a 90/10 breakdown (where 90% of each part was awarded for implementation correctness, and 10% was awarded for answers to the Discussion Questions for that part).
-
-# Lab 3- Website Fingerprinting
-**Learning Objectives**
-* Explore a new kind of side channel from a high level language.
-* Understand how to reason about the root cause of misleading microarchitectural observations.
-* Develop a real-world website fingerprinting attack that works on modern browsers.
-
-**Description**
-In this lab, students implement the techniques from our group's ISCA 2022 paper `There's Always a Bigger Fish: A Case Study of a Misunderstood Timing Side Channel`. Students will begin by implementing a seemingly familiar cache-based side channel attack in Javascript, and will then be asked to reason about why this attack works. Then, students will remove a core part of the attack, but see that the code still works.
-
-**Setup**
-Students can complete this lab on their own machines. MacOS, Linux, Windows all should work. Google Chrome is required for Part 4 of this lab.
-
-**Grading**
-This lab is graded entirely on the student's solutions PDF. As students may develop their code on a variety of possible systems, the TA should not attempt to grade based on whether the student's code works on the TA machine. Rather, credit should be given for reasonable implementations with a matching solutions document containing well thought-out answers.
-
-* Part 1 is 15% of the total.
-* Part 2 is 45% of the total.
-* Part 3 is 10% of the total.
-* Part 4 is 30% of the total.
 
 # Lab 4- Rowhammer
 
@@ -200,24 +155,19 @@ See the lab handout for our suggested grading scheme for this lab.
 * Understand buffer overflows/ code reuse attacks and implement a return-oriented programming attack from assembly instruction gadgets.
 * Combine software and hardware attacks to defeat a victim binary using a return oriented programming attack with ASLR defeated via hardware techniques.
 
-**Setup** This lab can reuse the same setup from Lab 2.
+**Setup** This lab can reuse the same setup from Lab 3.
 
 **Description**
 In this ultimate security lab, students will put all the pieces together from throughout the course to create a full end to end attack against a vulnerable piece of software. Students will learn about modern memory corruption protections, and use hardware side channels to defeat them. Then, students will build a realistic return-oriented programming (ROP) chain using the information leaked through side channels to defeat a victim process.
 
-**Grading**
-This lab is entirely self-grading with `check.py`. Instructors can grant partial credit as they see fit for partially functional solutions.
+# Lab 6- Fuzzing
 
-We made the `speculative probing` problem (Part 1C) extra credit.
-
-* Part 1 is 60% of the total.
-  * Part 1A is 20% of the total score for lab 5.
-  * Part 1B is 40% of the total score for lab 5.
-  * Part 1C adds an additional 20% onto the total score for lab 5 if correctly implemented.
-* Part 2 is 30% of the total.
-  * Part 2A is 10% of the total score for lab 5.
-  * Part 2B is 20% of the total score for lab 5.
-* Part 3 is 10% of the total.
+**Learning Objectives**
+* Learn how to use fuzzing in order to find faulty and hidden instructions in a RISC-V CPU.
+* Understand how to understand and write custom exception handlers.
+* Learn how to use CPU logic bugs to exploit a piece of victim software using buffer overflow attacks.
+* Exploit ROP techniques in order to manipulate security-critical register values.
+* Understand common exploit tools, including pwntools.
 
 # Deployment
 
@@ -226,72 +176,15 @@ As these lab assignments exploit microarchitectural implementation-specific char
 
 The deployment setup instructions for each lab are described above. Here is a summary of what was discussed in the per-lab sections.
 
-- Lab 1 uses a shared server where each student is allocated one physical core (so, two logical cores that share an SMT core).
-- Lab 2 uses any Intel machine with Spectre mitigations off.
-- Lab 3 uses student's personal machines.
+- Lab 1 uses student's personal machines.
+- Lab 2 uses a shared server where each student is allocated one physical core (so, two logical cores that share an SMT core).
+- Lab 3 uses any Intel machine with Spectre mitigations off.
 - Lab 4 uses a carefully inspected Intel machine with a memory controller and DRAM that are known to be vulnerable to Rowhammer.
-- Lab 5 reuses the Lab 2 setup.
+- Lab 5 reuses the Lab 3 setup.
+- Lab 5 uses a shared server where each student is allocated a dedicated debug port.
 
 For every lab, students require bare metal code execution (that is, no virtual machines, containers, etc. should be in between a student's code and the machine).
 
 ## Source Distribution
-When shipping the course materials, we granted every student their own `git` repo into which they could submit solutions. We automatically pulled student code from their repos at various times to ensure no funny business happened with students modifying commit times after the deadline, etc.
 
-We provided a central course `git` repo that students would fetch from at the beginning of each lab. Here's how we did that:
-
-```
-# [TA Machine] In the main course repo:
-git checkout --orphan labX
-# copy lab code into labX folder. eg:
-cp -R /PATH/TO/STARTER/CODE/labX labX
-git add labX
-git commit -m "Initial Lab X release"
-```
-
-```
-# [Student's machine] One time setup:
-git clone git@github.com:/PATH/TO/STUDENT/LAB.git securehwlabs
-cd securehwlabs
-git config user.name "MY_STUDENT_ID"
-git config user.email "MY_STUDENT_EMAIL"
-git remote add lab_release git@github.com:/PATH/TO/COURSE/MAIN/LAB.git
-```
-
-```
-# [Student's machine] Pulling a new lab to their local repo:
-git fetch lab_release
-git merge lab_release/labX --allow-unrelated-histories -m "Merging lab code"
-git push
-```
-
-```
-# [Student's machine] Submitting solutions:
-git add FILES_YOU_CHANGED
-git commit -m "WHAT YOU CHANGED"
-git push
-```
-
-Students need to run the "One time setup" on each new machine they are asked to work on. This will vary from setup to setup depending on the exact specifications of the course environment. We recommend publishing clear instructions for students on your course website. See our instructions [here](http://csg.csail.mit.edu/6.888Yan/labs/).
-
-It should go without saying that the main repo is read-only to every student, and the student repos are read-write but for just the student and the TA.
-
-### `git` Automatic Deployment (`mk_repo.py`)
-`deploy/mk_repo.py` will automatically generate student repositories with the appropriate permissions and add the students to them correctly.
-
-**NOTE** Use the deployment scripts are your own risk. They were built for our environment and may not work for yours.
-
-We maintain a list of students in `students.csv`. This list contains the following keys:
-* `name`: The student's human-readable full name.
-* `kerb`: The student's kerberos ID. This is synonymous with their GitHub username.
-
-To use `mk_repo.py`:
-
-1. Get your GitHub API token and place it in `token.txt`. (see `mk_repo.py:9`)
-1. Create a GitHub organization to put the new repos in.
-1. Create the main lab release repository (the one that students can all pull starter code from) in the new organization.
-1. Fill in `GITHUB_API`, `ORG_NAME`, and `MAIN_REPO` in `mk_repo.py` accordingly.
-1. Fill in `students.csv` with your roster for this semester.
-1. Make sure you have the GitHub module (`python3 -m pip install PyGithub`).
-1. Run `mk_repo.py`.
-
-You should now see all your student's repositories present in your GitHub organization. Double check the permissions are correct (students have read-write access to their own repo, and everyone has read access to the main lab release repo).
+In our course, students submitted their code using their personal GitHub accounts. For each lab, we sent a GitHub classroom invite to the students (via Piazza), which generates a new repository based on a public template. Students submitted their code by pushing their code before the assignment deadline (late submissions were allowed, but marked late by the GitHub classroom UI). For grading purposes, it is possible to use the GitHub classroom assistant program to clone all the students’ repositories to your local machine.

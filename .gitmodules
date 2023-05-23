@@ -1,0 +1,18 @@
+[submodule "SHD-WebsiteFingerprintingLab"]
+	path = SHD-WebsiteFingerprintingLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-WebsiteFingerprintingLab
+[submodule "SHD-CacheAttackLab"]
+	path = SHD-CacheAttackLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-CacheAttackLab
+[submodule "SHD-SpectreLab"]
+	path = SHD-SpectreLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-SpectreLab
+[submodule "SHD-RowhammerLab"]
+	path = SHD-RowhammerLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-RowhammerLab
+[submodule "SHD-ASLRLab"]
+	path = SHD-ASLRLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-ASLRLab
+[submodule "SHD-FuzzLab"]
+	path = SHD-FuzzLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-FuzzLab
