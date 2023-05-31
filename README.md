@@ -160,14 +160,15 @@ See the lab handout for our suggested grading scheme for this lab.
 **Description**
 In this ultimate security lab, students will put all the pieces together from throughout the course to create a full end to end attack against a vulnerable piece of software. Students will learn about modern memory corruption protections, and use hardware side channels to defeat them. Then, students will build a realistic return-oriented programming (ROP) chain using the information leaked through side channels to defeat a victim process.
 
-# Lab 6- Fuzzing
+# Lab 6- CPU Fuzzing
 
 **Learning Objectives**
-* Learn how to use fuzzing in order to find faulty and hidden instructions in a RISC-V CPU.
-* Understand how to understand and write custom exception handlers.
-* Learn how to use CPU logic bugs to exploit a piece of victim software using buffer overflow attacks.
-* Exploit ROP techniques in order to manipulate security-critical register values.
-* Understand common exploit tools, including pwntools.
+* Learn how to use fuzzing in order to find faulty and hidden backdoor instructions in a RISC-V CPU.
+* Understand the design and implementation of exception handlers in system software.
+* Explore privilege separation at the hardware level and write privileged bare metal system software.
+* Use CPU RTL bugs to exploit a piece of victim software using buffer overflow attacks.
+* Leverage ROP techniques in order to manipulate security-critical register values.
+* Practice common exploit tools and techniques, including pwntools.
 
 # Deployment
 
@@ -181,7 +182,7 @@ The deployment setup instructions for each lab are described above. Here is a su
 - Lab 3 uses any Intel machine with Spectre mitigations off.
 - Lab 4 uses a carefully inspected Intel machine with a memory controller and DRAM that are known to be vulnerable to Rowhammer.
 - Lab 5 reuses the Lab 3 setup.
-- Lab 5 uses a shared server where each student is allocated a dedicated debug port.
+- Lab 6 uses a shared server where each student is allocated a dedicated debug port.
 
 For every lab, students require bare metal code execution (that is, no virtual machines, containers, etc. should be in between a student's code and the machine).
 
