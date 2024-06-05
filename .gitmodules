@@ -16,3 +16,6 @@
 [submodule "SHD-FuzzLab"]
 	path = SHD-FuzzLab
 	url = https://github.com/CSAIL-Arch-Sec/SHD-FuzzLab
+[submodule "SHD-FormalVerificationLab"]
+	path = SHD-FormalVerificationLab
+	url = https://github.com/CSAIL-Arch-Sec/SHD-FormalVerificationLab
